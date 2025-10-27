@@ -1,0 +1,191 @@
+# 🚀 Go REST API Mark 1
+
+> **Status:** 🔨 Em desenvolvimento inicial | **Objetivo:** Aprendizado de Go com entusiasmo!
+
+Uma REST API desenvolvida em Go (Golang) para gerenciamento de usuários, construída com o objetivo de aprender e dominar os fundamentos da linguagem Go e boas práticas de desenvolvimento de APIs.
+
+## 📚 Sobre o Projeto
+
+Este é meu primeiro projeto sério em Go! Estou aprendendo a linguagem com muito entusiasmo e construindo esta API do zero para solidificar os conceitos fundamentais. O projeto segue princípios de **Clean Architecture** e implementa operações CRUD completas para usuários.
+
+### 🎯 Objetivos de Aprendizado
+
+- [x] Sintaxe básica do Go
+- [x] Structs e interfaces
+- [x] Ponteiros e gerenciamento de memória
+- [x] Conexão com PostgreSQL usando `database/sql`
+- [x] Context para gerenciamento de requisições
+- [ ] Middleware e autenticação JWT
+- [ ] Testes unitários
+- [ ] Docker e containerização
+- [ ] Deploy e CI/CD
+
+## 🛠️ Tecnologias Utilizadas
+
+- **[Go](https://golang.org/)** - Linguagem de programação
+- **[PostgreSQL](https://www.postgresql.org/)** - Banco de dados relacional
+- **[Chi Router](https://github.com/go-chi/chi)** - HTTP router (planejado)
+- **[Docker](https://www.docker.com/)** - Containerização (planejado)
+
+## 📁 Estrutura do Projeto
+
+```
+GO-API_mark1/
+├── cmd/
+│   └── api/
+│       └── main.go              # Ponto de entrada da aplicação
+├── internal/
+│   ├── database/
+│   │   └── connection.go        # Configuração do banco de dados
+│   └── modules/
+│       └── user/
+│           ├── model.go         # Definição da struct User
+│           ├── repository.go    # Camada de acesso aos dados
+│           ├── service.go       # Lógica de negócio
+│           └── handler.go       # Handlers HTTP (em desenvolvimento)
+├── .env.example                 # Exemplo de variáveis de ambiente
+├── .gitignore                   # Arquivos ignorados pelo Git
+├── go.mod                       # Dependências do projeto
+├── go.sum                       # Checksums das dependências
+└── README.md                    # Este arquivo
+```
+
+## 🚀 Como Executar
+
+### Pré-requisitos
+
+- Go 1.21 ou superior instalado
+- PostgreSQL instalado e rodando
+- Git
+
+### Passo a Passo
+
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/Igorlimaponce/GO-API_Mark1.git
+cd GO-API_mark1
+```
+
+2. **Instale as dependências:**
+```bash
+go mod download
+```
+
+3. **Configure as variáveis de ambiente:**
+
+Crie um arquivo `.env` baseado no `.env.example`:
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=seu_usuario
+DB_PASSWORD=sua_senha
+DB_NAME=go_api_mark1
+DB_SSLMODE=disable
+
+SERVER_PORT=8080
+```
+
+4. **Crie o banco de dados:**
+```sql
+CREATE DATABASE go_api_mark1;
+
+-- Execute a migration (em desenvolvimento)
+CREATE TABLE users (
+    id UUID PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    is_active BOOLEAN DEFAULT true,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+```
+
+5. **Execute a aplicação:**
+```bash
+go run cmd/api/main.go
+```
+
+A API estará disponível em `http://localhost:8080`
+
+## 📋 Endpoints (Planejados)
+
+| Método | Endpoint | Descrição | Status |
+|--------|----------|-----------|--------|
+| POST | `/api/users` | Criar novo usuário | 🔨 Em desenvolvimento |
+| GET | `/api/users` | Listar todos os usuários | 🔨 Em desenvolvimento |
+| GET | `/api/users/:id` | Buscar usuário por ID | 🔨 Em desenvolvimento |
+| PUT | `/api/users/:id` | Atualizar usuário | 🔨 Em desenvolvimento |
+| DELETE | `/api/users/:id` | Deletar usuário | 🔨 Em desenvolvimento |
+
+## 🧪 Testes
+
+```bash
+# Executar todos os testes (em desenvolvimento)
+go test ./...
+
+# Executar testes com coverage
+go test -cover ./...
+```
+
+## 📖 O Que Aprendi Até Agora
+
+### 🎓 Conceitos de Go
+
+- **Structs e Métodos:** Como definir structs e adicionar métodos receivers
+- **Interfaces:** Implementação de interfaces para desacoplamento
+- **Ponteiros:** Uso de `*` e `&` para manipulação de memória
+- **Context:** Gerenciamento de timeouts e cancelamentos
+- **Error Handling:** Tratamento de erros idiomático do Go
+- **Database/SQL:** Conexão e queries com PostgreSQL
+
+### 🔧 Padrões Implementados
+
+- **Repository Pattern:** Separação da lógica de acesso aos dados
+- **Dependency Injection:** Injeção de dependências via construtores
+- **Clean Architecture:** Separação em camadas (handler → service → repository)
+
+## 🐛 Problemas Conhecidos / TODO
+
+- [ ] Implementar autenticação JWT
+- [ ] Adicionar validação de entrada
+- [ ] Implementar hash de senha (bcrypt)
+- [ ] Criar testes unitários
+- [ ] Adicionar logging estruturado
+- [ ] Implementar migrations
+- [ ] Dockerizar a aplicação
+- [ ] Adicionar documentação Swagger
+
+## 🤝 Contribuições
+
+Como estou aprendendo, feedbacks e sugestões são muito bem-vindos! Sinta-se à vontade para:
+
+- Abrir issues com sugestões
+- Propor melhorias no código
+- Compartilhar recursos de aprendizado
+- Corrigir erros que encontrar
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Sinta-se livre para usar como referência para seus estudos!
+
+## 👨‍💻 Autor
+
+Desenvolvido com ❤️ e muito café por [Seu Nome]
+
+- GitHub: [@IgorLimaPonce](https://github.com/Igorlimaponce)
+- LinkedIn: [Igor Lima Ponce]
+
+---
+
+⭐ **Dica de aprendizado:** Se você também está aprendendo Go, clone este projeto e tente implementar novas funcionalidades! A melhor forma de aprender é fazendo.
+
+## 📚 Recursos de Aprendizado
+
+Recursos que estou usando para aprender Go:
+
+- [Tour of Go](https://tour.golang.org/) - Tutorial oficial interativo
+- [Go by Example](https://gobyexample.com/) - Exemplos práticos
+- [Effective Go](https://golang.org/doc/effective_go.html) - Guia oficial de boas práticas
+- [Go Documentation](https://golang.org/doc/) - Documentação oficial

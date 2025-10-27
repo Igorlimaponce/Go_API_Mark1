@@ -1,0 +1,103 @@
+# Binários compilados do Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+rest-api_mark1
+rest-api_mark1.exe
+
+# Arquivos de teste
+*.test
+*.out
+coverage.txt
+*.coverprofile
+
+# Diretórios de build
+/bin/
+/build/
+/dist/
+/target/
+
+# Dependências do Go
+/vendor/
+go.work
+go.work.sum
+
+# IDEs e editores
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+.project
+.classpath
+.settings/
+
+# Arquivos de ambiente e configuração sensível
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.crt
+config/local.yaml
+config/local.yml
+secrets.yaml
+
+# Logs
+*.log
+logs/
+log/
+
+# Arquivos temporários
+tmp/
+temp/
+*.tmp
+*.bak
+*.cache
+
+# Databases locais
+*.db
+*.sqlite
+*.sqlite3
+/data/
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Sistema operacional
+Thumbs.db
+Desktop.ini
+.Spotlight-V100
+.Trashes
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Air (live reload)
+tmp/
+.air.toml
+
+# Delve debugger
+__debug_bin
+
+# GoLand
+.idea/
+
+# VSCode Go extension
+.vscode-test/
+
+# Profiling
+*.prof
+cpu.prof
+mem.prof
