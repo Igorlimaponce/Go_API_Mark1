@@ -103,15 +103,16 @@ func (r *dbRepository) UpdateUser(ctx context.Context, user *User) error {
 
 	query := `
 		UPDATE users 
-		SET name = $1, email = $2, password = $3, role = $4, is_active = $5, updated_at = $6 
-		WHERE id = $7
+		SET name = $1, email = $2, role = $3, is_active = $4, updated_at = $5 
+		WHERE id = $6
 	`
+	//, password = $3
 	// Nota: Esta query assume que você está atualizando a senha.
 	// O UserService seria responsável por decidir se a senha antiga ou a nova hasheada é passada.
 	res, err := r.db.ExecContext(ctx, query,
 		user.Name,
 		user.Email,
-		user.Password, // Espera-se que JÁ ESTEJA HASHEADA (se foi alterada)
+		//user.Password, // Espera-se que JÁ ESTEJA HASHEADA (se foi alterada)
 		user.Role,
 		user.isActive,
 		user.updatedAt,
