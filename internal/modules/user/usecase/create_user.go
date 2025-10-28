@@ -3,8 +3,7 @@ package usecase
 import (
 	"context"
 	"fmt"
-	"regexp"
-	"rest-api_mark1/internal/modules/user/models"
+	models "rest-api_mark1/internal/modules/user"
 	"rest-api_mark1/internal/modules/user/repository"
 	"time"
 
@@ -42,9 +41,6 @@ type CreateUserOutput struct {
 	CreatedAt time.Time       `json:"created_at"`
 	UpdatedAt time.Time       `json:"updated_at"`
 }
-
-// Esse regex simples valida o formato básico de um email.
-var emailRegex = regexp.MustCompile(`^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$`)
 
 // Exec executa a lógica de criação de um novo usuário.
 // Valida os dados de entrada, criptografa a senha e persiste no repositório.
@@ -98,26 +94,17 @@ func (uc *CreateUserUseCase) Exec(ctx context.Context, input CreateUserInput) (*
 
 // validate valida os dados de entrada
 func (uc *CreateUserUseCase) validate(input CreateUserInput) error {
-	if input.Name == "" {
-		return fmt.Errorf("name is required")
+	if err := models.ValidateName(input.Name); err != nil {
+		return err
 	}
-	if len(input.Name) < 3 {
-		return fmt.Errorf("name must be at least 3 characters")
+	if err := models.ValidateEmail(input.Email); err != nil {
+		return err
 	}
-	if input.Email == "" {
-		return fmt.Errorf("email is required")
+	if err := models.ValidatePassword(input.Password); err != nil {
+		return err
 	}
-	if !emailRegex.MatchString(input.Email) {
-		return fmt.Errorf("invalid email format")
-	}
-	if input.Password == "" {
-		return fmt.Errorf("password is required")
-	}
-	if len(input.Password) < 8 {
-		return fmt.Errorf("password must be at least 8 characters")
-	}
-	if input.Role == "" {
-		return fmt.Errorf("role is required")
+	if err := models.ValidateRole(input.Role); err != nil {
+		return err
 	}
 	return nil
 }

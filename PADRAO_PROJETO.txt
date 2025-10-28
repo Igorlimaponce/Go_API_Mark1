@@ -1,0 +1,20 @@
+┌─────────────────────────────────────────────────────┐
+│                    HANDLER                          │
+│  ✅ Validação de entrada HTTP (JSON, tipos)         │
+│  ✅ go-playground/validator (tags struct)           │
+└─────────────────────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────┐
+│                    USECASE                          │
+│  ✅ Regras de negócio (unicidade, permissões)       │
+│  ✅ Validações de contexto (usuário ativo?)         │
+│  ✅ Orquestração de operações                       │
+└─────────────────────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────┐
+│                     MODELS                          │
+│  ✅ Invariantes de domínio (formato, tipo)          │
+│  ✅ Validações que SEMPRE devem ser verdadeiras     │
+└─────────────────────────────────────────────────────┘
